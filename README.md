@@ -31,18 +31,16 @@
 
    ```bash
    pnpm install
-   git add . && git commit -m "pnpm create cloudflare@latest > Hello World example > SSR"
    ```
 
-1. Replace [server/src/index.ts](server/src/index.ts)
+1. Replace [server/src/index.ts](server/src/index.ts) and try to run
    - `pnpx expo install expo-server`
-
-1. ...
    - `npx expo export -p web`
       - ^^^ `pnpx ...` doesn't work for some reason
    - Update [server/wrangler.jsonc](server/wrangler.jsonc)
       - `"assets": { "directory": "../dist/client" }`
-   - `cd server && pnpm run dev`
+      - Add `"nodejs_compat"` to `compatibility_flags`
+   - `pnpm run cf-dev`
 
 ---
 

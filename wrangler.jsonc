@@ -5,15 +5,46 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "2511-expo-cf-worker",
-	"main": "src/index.ts",
+	"main": "server-report.ts",
 	"compatibility_date": "2025-11-25",
 	"compatibility_flags": [
-		"global_fetch_strictly_public"
+		"global_fetch_strictly_public",
+		"nodejs_compat"
 	],
 	"assets": {
-		// The path to the directory containing the `index.html` file to be served at `/`
-		"directory": "./public"
+		"directory": "./dist/client",
+		// "directory": "./dist",
+		// "binding": "ASSETS",
+		// "run_worker_first": true,
 	},
+
+	// "find_additional_modules": true,
+	// "rules": [
+	// 	{
+	// 		"type": "CommonJS",
+	// 		"globs": [
+	// 			"dist/server/**/*.js",
+	// 		],
+	// 		// "fallthrough": true
+	// 	},
+	// 	// {
+	// 	// 	"type": "Text",
+	// 	// 	"globs": [
+	// 	// 		"dist/server/**/*.json",
+	// 	// 	],
+	// 	// 	// "fallthrough": true
+	// 	// },
+	// 	{
+	// 		"type": "Text",
+	// 		"globs": [
+	// 			"dist/**/*.json",
+	// 			"dist/**/*.html",
+	// 			"dist/**/*.map",
+	// 		],
+	// 		"fallthrough": false
+	// 	}
+	// ],
+
 	"observability": {
 		"enabled": true
 	}
