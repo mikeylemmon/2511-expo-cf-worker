@@ -2,16 +2,48 @@
 
 ## How this project was created
 
-```bash
-pnpm create expo-app@latest 2511-expo-cf-worker
-cd 2511-expo-cf-worker
-pnpm create cloudflare@latest 2511-expo-cf-worker
-? Category ? Hello World example > SSR / full-stack app
-? Language ? TypeScript
-mv 2511-expo-cf-worker server
-pnpm install
-git add . && git commit -m "pnpm create cloudflare@latest > Hello World example > SSR"
-```
+1. Create the expo app and workers server
+
+   ```bash
+   pnpm create expo-app@latest 2511-expo-cf-worker
+   cd 2511-expo-cf-worker
+   ```
+
+1. Create server function
+   - Update [app.json](app.json)
+      - `web` > `output`: `server`
+      - `experiments` > `reactServerFunctions`: `true`
+   - `pnpx expo install react-server-dom-webpack`
+   - Create [actions/server-func.ts](actions/server-func.ts)
+   - Call `serverFunc` in [app/_layout.tsx](app/_layout.tsx)
+   - Confirm the server function is working with the expo dev server: `pnpm run start`
+
+1. Create the cloudflare worker server
+
+   ```bash
+   pnpm create cloudflare@latest 2511-expo-cf-worker
+   ? Category ? Hello World example > SSR / full-stack app
+   ? Language ? TypeScript
+   mv 2511-expo-cf-worker server
+   ```
+
+   Remove `server/package.json`, move scripts and deps to root, `pnpm install`
+
+   ```bash
+   pnpm install
+   git add . && git commit -m "pnpm create cloudflare@latest > Hello World example > SSR"
+   ```
+
+1. Replace [server/src/index.ts](server/src/index.ts)
+   - `pnpx expo install expo-server`
+
+1. ...
+   - `npx expo export -p web`
+      - ^^^ `pnpx ...` doesn't work for some reason
+   - Update [server/wrangler.jsonc](server/wrangler.jsonc)
+      - `"assets": { "directory": "../dist/client" }`
+   - `cd server && pnpm run dev`
+
 ---
 
 ## Welcome to your Expo app 👋
