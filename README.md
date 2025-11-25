@@ -5,11 +5,12 @@
 ```bash
 pnpm create expo-app@latest 2511-expo-cf-worker
 cd 2511-expo-cf-worker
-pnpm create cloudflare@latest -- 2511-expo-cf-worker
+pnpm create cloudflare@latest 2511-expo-cf-worker
 ? Category ? Hello World example > SSR / full-stack app
 ? Language ? TypeScript
 mv 2511-expo-cf-worker server
-git add . && git commit -m "`pnpm create cloudflare@latest`, Hello World example > SSR"
+pnpm install
+git add . && git commit -m "pnpm create cloudflare@latest > Hello World example > SSR"
 ```
 ---
 
