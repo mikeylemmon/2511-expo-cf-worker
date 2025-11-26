@@ -10,8 +10,9 @@ pnpm run cf-dev
 
 ## Current state
 
-- [x] Web app successfully served by wrangler dev server
-- [ ] Server function successfully called from web app
+- [x] Web app served by wrangler dev server
+- [x] API route works (GET /hello)
+- [ ] Server function works (fails with "Illegal invocation" error)
 
   Call to [serverFunc](actions/server-func.ts) is failing with:
   ```text
@@ -61,6 +62,8 @@ pnpm run cf-dev
       - which runs: `expo export -p web --output-dir=server/src/dist`
       - Note that `pnpx expo export...` doesn't work for some reason
    - `pnpm run cf-dev`
+
+1. Create an API route, call from _layout.tsx
 
 ---
 

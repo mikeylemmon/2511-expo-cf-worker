@@ -24,6 +24,15 @@ export default function RootLayout() {
   useEffect(() => {
     startTransition(async () => {
       try {
+        console.log("[app/_layout.tsx]: calling /hello... (API route)");
+        const resp = await fetch("/hello");
+        const hello = await resp.json();
+        console.log("[app/_layout.tsx]: hello response:", hello);
+      } catch (error) {
+        console.error("[app/_layout.tsx]: /hello error:", { error });
+      }
+
+      try {
         console.log("[app/_layout.tsx]: calling serverFunc...");
         const resp = await serverFunc({ foo: "hoo" });
         console.log("[app/_layout.tsx]: serverFunc response:", resp);
