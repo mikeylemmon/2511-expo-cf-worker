@@ -1,15 +1,36 @@
 # expo-server on a cloudflare worker
 
+## Running the app
+
+```text
+pnpm install
+pnpm run export
+pnpm run cf-dev
+```
+
+## Current state
+
+- [x] Web app successfully served by wrangler dev server
+- [ ] Server function successfully called from web app
+
+  Call to [serverFunc](actions/server-func.ts) is failing with:
+  ```text
+  [wrangler:error] TypeError: Illegal invocation: function called with incorrect `this` reference. See https://developers.cloudflare.com/workers/observability/errors/#illegal-invocation-errors for details.
+     at null.<anonymous> (file:///.../server/src/dist/server/_expo/functions/_flight/%5B...rsc%5D.js:13:39)
+     at f (file:///.../server/src/dist/server/_expo/functions/_flight/%5B...rsc%5D.js:2:2060)
+     at a (file:///.../server/src/dist/server/_expo/functions/_flight/%5B...rsc%5D.js:2:1556)
+  ```
+
 ## How this project was created
 
-1. Create the expo app and workers server
+1. Create the expo app
 
-   ```bash
+   ```text
    pnpm create expo-app@latest 2511-expo-cf-worker
    cd 2511-expo-cf-worker
    ```
 
-1. Create server function
+1. Create a server function
    - Update [app.json](app.json)
       - `web` > `output`: `server`
       - `experiments` > `reactServerFunctions`: `true`
@@ -20,26 +41,25 @@
 
 1. Create the cloudflare worker server
 
-   ```bash
+   ```text
    pnpm create cloudflare@latest 2511-expo-cf-worker
-   ? Category ? Hello World example > SSR / full-stack app
-   ? Language ? TypeScript
+   # Category? Hello World example > SSR / full-stack app
+   # Language? TypeScript
    mv 2511-expo-cf-worker server
    ```
 
-   Remove `server/package.json`, move scripts and deps to root, `pnpm install`
-
-   ```bash
-   pnpm install
-   ```
-
-1. Replace [server/src/index.ts](server/src/index.ts) and try to run
+   - Remove `server/package.json`, move scripts and deps to root, `pnpm install`
    - `pnpx expo install expo-server`
-   - `npx expo export -p web`
-      - ^^^ `pnpx ...` doesn't work for some reason
+   - Add workerd handler to [server/src/index.ts](server/src/index.ts)
    - Update [server/wrangler.jsonc](server/wrangler.jsonc)
-      - `"assets": { "directory": "../dist/client" }`
+      - `"assets": { "directory": "./src/dist/client" }`
       - Add `"nodejs_compat"` to `compatibility_flags`
+      - Add `"rules"` to catch the exported files
+
+1. Export the app and run the worker
+   - `pnpm run export`
+      - which runs: `expo export -p web --output-dir=server/src/dist`
+      - Note that `pnpx expo export...` doesn't work for some reason
    - `pnpm run cf-dev`
 
 ---

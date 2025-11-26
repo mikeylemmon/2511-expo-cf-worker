@@ -10,7 +10,7 @@ export type ServerFuncState = {
 export async function serverFunc({
   foo,
 }: ServerFuncState): Promise<ServerFuncState> {
-  console.log("serverFunc", { foo });
+  console.log("[actions/server-func.ts]:", { foo });
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return {
     foo: "hi",

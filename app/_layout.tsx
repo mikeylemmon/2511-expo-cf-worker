@@ -17,18 +17,20 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-
   const [funcState, setFuncState] = useState<ServerFuncState>({ foo: "bar" });
   const [isPending, startTransition] = useTransition();
-  console.log("serverFunc:", { isPending }, funcState);
+
+  console.log("[app/_layout.tsx]: serverFunc:", { isPending }, funcState);
   useEffect(() => {
     startTransition(async () => {
       try {
+        console.log("[app/_layout.tsx]: calling serverFunc...");
         const resp = await serverFunc({ foo: "hoo" });
-        console.log("serverFunc response:", resp);
+        console.log("[app/_layout.tsx]: serverFunc response:", resp);
         setFuncState(resp);
       } catch (error) {
-        console.error("serverFunc error:", { error });
+        console.error("[app/_layout.tsx]: serverFunc error:", { error });
+        setFuncState({ error: (error as Error).message });
       }
     });
   }, []);

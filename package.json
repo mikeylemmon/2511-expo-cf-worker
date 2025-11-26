@@ -10,6 +10,7 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "export": "expo export -p web --output-dir=server/src/dist",
+    "export-and-run": "pnpm run export && pnpm run cf-dev",
     "cf-deploy": "cd server && wrangler deploy",
     "cf-dev": "cd server && wrangler dev",
     "cf-start": "cd server && wrangler dev",
