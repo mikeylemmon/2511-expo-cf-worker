@@ -9,6 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
+    "export": "expo export -p web --output-dir=server/src/dist",
     "cf-deploy": "cd server && wrangler deploy",
     "cf-dev": "cd server && wrangler dev",
     "cf-start": "cd server && wrangler dev",

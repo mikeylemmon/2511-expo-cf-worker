@@ -7,12 +7,9 @@
 	"name": "2511-expo-cf-worker",
 	"main": "src/server.ts",
 	"compatibility_date": "2025-11-25",
-	"compatibility_flags": [
-		"global_fetch_strictly_public",
-		"nodejs_compat"
-	],
+	"compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
 	"assets": {
-		"directory": "./src/dist/client",
+		"directory": "./src/dist/client"
 		// "directory": "./dist",
 		// "binding": "ASSETS",
 		// "run_worker_first": true,
@@ -22,18 +19,14 @@
 	"rules": [
 		{
 			"type": "CommonJS",
-			"globs": [
-				"dist/server/**/*.js",
-			],
+			"globs": ["dist/server/**/*.js"],
 			"fallthrough": true
 		},
 		{
 			"type": "Text",
-			"globs": [
-				"dist/server/**/*.json",
-			],
+			"globs": ["dist/server/**/*.json", "dist/server/**/*.txt"],
 			"fallthrough": true
-		},
+		}
 		// {
 		// 	"type": "Text",
 		// 	"globs": [
