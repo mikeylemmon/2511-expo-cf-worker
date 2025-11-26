@@ -5,45 +5,45 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "2511-expo-cf-worker",
-	"main": "server-report.ts",
+	"main": "src/server.ts",
 	"compatibility_date": "2025-11-25",
 	"compatibility_flags": [
 		"global_fetch_strictly_public",
 		"nodejs_compat"
 	],
 	"assets": {
-		"directory": "./dist/client",
+		"directory": "./src/dist/client",
 		// "directory": "./dist",
 		// "binding": "ASSETS",
 		// "run_worker_first": true,
 	},
 
-	// "find_additional_modules": true,
-	// "rules": [
-	// 	{
-	// 		"type": "CommonJS",
-	// 		"globs": [
-	// 			"dist/server/**/*.js",
-	// 		],
-	// 		// "fallthrough": true
-	// 	},
-	// 	// {
-	// 	// 	"type": "Text",
-	// 	// 	"globs": [
-	// 	// 		"dist/server/**/*.json",
-	// 	// 	],
-	// 	// 	// "fallthrough": true
-	// 	// },
-	// 	{
-	// 		"type": "Text",
-	// 		"globs": [
-	// 			"dist/**/*.json",
-	// 			"dist/**/*.html",
-	// 			"dist/**/*.map",
-	// 		],
-	// 		"fallthrough": false
-	// 	}
-	// ],
+	"find_additional_modules": true,
+	"rules": [
+		{
+			"type": "CommonJS",
+			"globs": [
+				"dist/server/**/*.js",
+			],
+			"fallthrough": true
+		},
+		{
+			"type": "Text",
+			"globs": [
+				"dist/server/**/*.json",
+			],
+			"fallthrough": true
+		},
+		// {
+		// 	"type": "Text",
+		// 	"globs": [
+		// 		"dist/**/*.json",
+		// 		"dist/**/*.html",
+		// 		"dist/**/*.map",
+		// 	],
+		// 	"fallthrough": false
+		// }
+	],
 
 	"observability": {
 		"enabled": true

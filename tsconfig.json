@@ -6,16 +6,12 @@
       "@/*": [
         "./*"
       ]
-    },
-    "types": [
-      "./worker-configuration.d.ts"
-    ]
+    }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts",
-    "worker-configuration.d.ts"
+    "expo-env.d.ts"
   ]
 }
