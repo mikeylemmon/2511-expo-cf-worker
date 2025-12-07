@@ -37,7 +37,7 @@ pnpm run cf-dev
       - `experiments` > `reactServerFunctions`: `true`
    - `pnpx expo install react-server-dom-webpack`
    - Create [actions/server-func.ts](actions/server-func.ts)
-   - Call `serverFunc` in [app/_layout.tsx](app/_layout.tsx)
+   - Call `serverFunc` in [app/_layout.tsx](app/index.tsx)
    - Confirm the server function is working with the expo dev server: `pnpm run start`
 
 1. Create the cloudflare worker server
@@ -63,7 +63,7 @@ pnpm run cf-dev
       - Note that `pnpx expo export...` doesn't work for some reason
    - `pnpm run cf-dev`
 
-1. Create an API route, call from _layout.tsx
+1. Create an API route ([app/hello+api.ts](app/hello+api.ts)), call from [app/index.tsx](app/index.tsx)
 
 ---
 

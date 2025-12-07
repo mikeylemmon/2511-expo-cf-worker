@@ -6,7 +6,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "2511-expo-cf-worker",
 	"main": "src/index.ts",
-	"compatibility_date": "2025-11-25",
+	"compatibility_date": "2025-11-18",
 	"compatibility_flags": ["global_fetch_strictly_public", "nodejs_compat"],
 	"assets": {
 		"directory": "./src/dist/client"
