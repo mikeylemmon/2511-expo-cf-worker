@@ -12,15 +12,7 @@ pnpm run cf-dev
 
 - [x] Web app served by wrangler dev server
 - [x] API route works (GET /hello)
-- [ ] Server function works (fails with "Illegal invocation" error)
-
-  Call to [serverFunc](actions/server-func.ts) is failing with:
-  ```text
-  [wrangler:error] TypeError: Illegal invocation: function called with incorrect `this` reference. See https://developers.cloudflare.com/workers/observability/errors/#illegal-invocation-errors for details.
-     at null.<anonymous> (file:///.../server/src/dist/server/_expo/functions/_flight/%5B...rsc%5D.js:13:39)
-     at f (file:///.../server/src/dist/server/_expo/functions/_flight/%5B...rsc%5D.js:2:2060)
-     at a (file:///.../server/src/dist/server/_expo/functions/_flight/%5B...rsc%5D.js:2:1556)
-  ```
+- [x] Server function works (requires expo@>=54.0.29)
 
 ## How this project was created
 
